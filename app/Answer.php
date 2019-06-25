@@ -20,4 +20,18 @@ class Answer extends Model
     {
     	return \Parsedown::instance()->text($this->body);
     }
+
+    public static function boot()
+    {
+    	parent::boot();
+
+    	static::created(function($answer) {
+    		// echo "Answer created\n";
+    		$answer->question->increment('answers_count');
+    	});
+
+    	// static::saved(function($answer) {
+    	// 	echo "Answer saved\n";
+    	// });
+    }
 }
