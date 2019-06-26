@@ -14,7 +14,7 @@
                         <a href="#" title="This answer is useful" class="vote-up">
                             <i class="fas fa-caret-up fa-3x"></i>
                         </a>
-                        <span class="votes-count">100</span>
+                        <span class="votes-count">{{ $answer->votes_count }}</span>
                         <a href="#" title="This answer is not useful" class="vote-down off">
                             <i class="fas fa-caret-down fa-3x"></i>
                         </a>
