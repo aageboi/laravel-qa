@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class AnswersController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -21,6 +21,8 @@ class AnswersController extends Controller
      */
     public function store(Question $question, Request $request)
     {
+        // $this->authorize('create', $answer);
+
         $question->answers()->create(
             $request->validate([
                 'body' => 'required'
