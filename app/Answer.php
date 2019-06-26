@@ -47,13 +47,16 @@ class Answer extends Model
     	// });
 
     	static::deleted(function($answer) {
-    		$question = $answer->question;
-    		$question->decrement('answers_count');
+    		$answer->question->decrement('answers_count');
 
-    		if ($question->best_answer_id == $answer->id) {
-    			$question->best_answer_id = NULL;
-    			$question->save();
-    		}
+    		// cara lain untuk set null di best_answer_id jika dihapus
+    		// $question = $answer->question;
+    		// $question->decrement('answers_count');
+
+    		// if ($question->best_answer_id == $answer->id) {
+    		// 	$question->best_answer_id = NULL;
+    		// 	$question->save();
+    		// }
     	});
     }
 }
