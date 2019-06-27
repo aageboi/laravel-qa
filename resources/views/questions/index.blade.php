@@ -50,12 +50,14 @@
                                     @endcan
                                 </div>
                             </div>
-                				<p class="lead">
-                					Asked by 
-                					<a href="{{ $question->user->url }}">{{ $question->user->name }}</a>
-                					<small class="text-muted">{{ $question->created_date }}</small>
-                				</p>
-                			{{ str_limit($question->body, 250) }}
+            				<p class="lead">
+            					Asked by 
+            					<a href="{{ $question->user->url }}">{{ $question->user->name }}</a>
+            					<small class="text-muted">{{ $question->created_date }}</small>
+            				</p>
+                			<div class="excerpt">
+                                {{ $question->excerpt(350) }}
+                            </div>
                 		</div>
                 	</div>
                 	<hr>
