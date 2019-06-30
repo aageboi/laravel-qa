@@ -28,13 +28,20 @@ class AnswersController extends Controller
     {
         // $this->authorize('create', $answer);
 
-        $question->answers()->create(
+        $answer = $question->answers()->create(
             $request->validate([
                 'body' => 'required'
             ]) + [
                 'user_id' => \Auth::id()
             ]
         );
+
+        if ($request->expectsJson()) {
+            return response()->json([
+                'message' => 'Your answers has been submitted successfully',
+                'answer' => $answer->load('user')
+            ]);
+        }
 
         return back()->with('success', 'Your answers has been submitted successfully');
     }
