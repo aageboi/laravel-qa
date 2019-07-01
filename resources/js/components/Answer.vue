@@ -30,6 +30,9 @@
 </template>
 
 <script>
+import UserInfo from './UserInfo';
+import Vote from './Vote';
+
 export default {
 	props: ['answer'],
 
@@ -108,6 +111,10 @@ export default {
 		endpoint () {
 		 	return `/questions/${this.questionId}/answers/${this.id}`
 		}
+	},
+
+	components: {
+		UserInfo, Vote
 	}
 }
 </script>
